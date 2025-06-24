@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node app.js",
     "test": "jest",
-    "build": "echo 'No build step for simple Node.js app'"
+    "build": "echo 'No build step for simple Node.js app 2'"
   },
   "dependencies": {},
   "devDependencies": {
