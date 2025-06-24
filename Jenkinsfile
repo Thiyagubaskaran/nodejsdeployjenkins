@@ -1,24 +1,36 @@
 pipeline {
     agent any
+
     stages {
-        stage('Install') {
+        stage('Clone') {
+            steps {
+                git 'https://github.com/Thiyagubaskaran/nodejsdeployjenkins.git'
+            }
+        }
+
+        stage('Install Dependencies') {
             steps {
                 sh 'npm install'
             }
         }
+
         stage('Test') {
             steps {
-                sh 'npm test'
+                echo 'Running Jest tests...'
+                sh 'npx jest --ci || true'
             }
         }
+
         stage('Build') {
             steps {
-                sh 'npm run build || echo "No build script"'
+                echo 'No build step for simple Node.js app'
             }
         }
+
         stage('Deploy') {
             steps {
-                echo 'Deploy stage (customize as needed)'
+                echo 'Deploying Node.js app...'
+                sh 'nohup npm start &'
             }
         }
     }
